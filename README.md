@@ -1,25 +1,23 @@
-# README
+# CHIRPER
+Chirper is a social media platform where uers can post 140 character microposts to share their thoughts and rambles.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Chirper is built using Ruby on Rails, and runs as Docker containers using microservice architecture.
 
-Things you may want to cover:
+To run this webapp, complete the following steps in a terminal:
 
-* Ruby version
+* `docker build -t {image_name:version_number} .` e.g. `docker build -t chirper:1.0 .` Note: Make sure to include the `.` at the end of the command. 
+* (Optional: Configure custom database settings in `database.yml`, default uses postgres on port 5432, username `postgres` and blank password.
 
-* System dependencies
+* Create and run the database container: `docker run -rm -d -p 5433:5432 -name localdb postgres`
 
-* Configuration
+* Run the app container: `docker run -p 3000:3000 --link localdb:toyappdb toy-app`
 
-* Database creation
+* Need to run db:create and db:migrate in postgres container (maybe this could be done in a Dockerfile or dtabase.yml somehow?)
 
-* Database initialization
+* Verify that both containers are up and running: `docker ps`
 
-* How to run the test suite
+* Navigate to `localhost:3000 (or 0.0.0.0:3000`
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
 
 * ...
 # chirper
